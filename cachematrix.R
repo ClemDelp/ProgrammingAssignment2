@@ -1,25 +1,23 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
+## matricx class (constructor, getter, setter) put matrixin cache when created
 makeCacheMatrix <- function(x = matrix()) {
-	m <- NULL
+	m <- NULL 
+	## setter matrix
     set <- function(y) {
             x <<- y
             m <<- NULL
     }
+    ## getter matrix
     get <- function() x
+    ## setter inverse matrix
     setsolve <- function(solve) m <<- solve
+    ## getter inverse matrix
     getsolve <- function() m
     list(set = set, get = get,
          setsolve = setsolve,
          getsolve = getsolve)
 }
 
-
-## Write a short comment describing this function
-
+## function to inverse a given matriw
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     m <- x$getsolve()
@@ -28,6 +26,7 @@ cacheSolve <- function(x, ...) {
             return(m)
     }
     data <- x$get()
+    ## inverse the given matrix
     m <- solve(data, ...)
     x$setsolve(m)
     m
